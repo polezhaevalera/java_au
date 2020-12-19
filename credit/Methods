@@ -1,1 +1,26 @@
+package Lera;
 
+import java.util.HashMap;
+import java.util.List;
+
+public class Methods {
+
+    public static boolean pointInList(Point3D point3D, List<Point3D> point3DList) {
+        return point3DList.stream().anyMatch(p -> p.equals(point3D));
+    }
+
+    public static HashMap<Point3D, Integer> makeHashMap(List<Point3D> point3DList) {
+        HashMap<Point3D, Integer> hashMap = new HashMap<>();
+
+        for (Point3D point3D : point3DList) {
+            if (!hashMap.containsKey(point3D)) {
+                hashMap.put(point3D, 1);
+            }
+            else {
+                int value = hashMap.get(point3D);
+                hashMap.replace(point3D, value, value + 1);
+            }
+        }
+        return hashMap;
+    }
+}
