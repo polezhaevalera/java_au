@@ -20,6 +20,43 @@ https://leetcode.com/problems/implement-stack-using-queues/
 
 ## Implement Queue Using Stacks
 https://leetcode.com/problems/implement-queue-using-stacks/
+```java
+Stack stk = new Stack(); 
+Stack rev = new Stack();//used when performing DeQueue operation
+
+public MyQueue() {
+        
+}
+    
+public void push(int x) {
+    stk.push(x);
+}
+    
+
+public int pop() {
+    while(!stk.isEmpty()){
+        rev.push(stk.pop());
+    }
+    Object x = rev.pop();
+    while(!rev.isEmpty()){
+        stk.push(rev.pop());
+    }
+    return (int)x;
+}
+    
+
+public int peek() {
+    Iterator value = stk.iterator();
+    return (int)value.next();
+}
+    
+public boolean empty() {
+    if(stk.isEmpty())
+       return true;
+    else
+        return false;
+}
+```
 
 ## Binary Search Tree Iterator
 https://leetcode.com/problems/binary-search-tree-iterator/
