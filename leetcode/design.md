@@ -23,4 +23,28 @@ https://leetcode.com/problems/implement-queue-using-stacks/
 
 ## Binary Search Tree Iterator
 https://leetcode.com/problems/binary-search-tree-iterator/
-
+```java
+Stack<TreeNode> stack;
+public BSTIterator(TreeNode root) {
+    stack = new Stack<>();
+    TreeNode cur = root;
+    while (cur != null) {
+        stack.push(cur);
+        cur = cur.left;
+    }
+}
+    
+public int next() {
+    TreeNode current = stack.pop();
+    TreeNode cur = current.right;
+    while (cur != null) {
+        stack.push(cur);
+        cur = cur.left;
+    }
+    return current.val;
+}
+    
+public boolean hasNext() {
+    return !stack.isEmpty();
+}
+```
