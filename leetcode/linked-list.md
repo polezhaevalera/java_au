@@ -11,6 +11,28 @@
 https://leetcode.com/problems/reverse-linked-list/
 ## Middle-Of-The-Linked-List
 https://leetcode.com/problems/middle-of-the-linked-list/
+```java
+public ListNode middleNode(ListNode head) {
+        
+    ListNode prev, curr, next;
+        
+    curr = head;
+    int counter = 0;
+    while (curr != null) {
+        curr = curr.next;
+        counter++;
+    }
+        
+    curr = head;
+    counter = counter / 2;
+    while (counter != 0) {
+        counter--;
+        curr = curr.next;
+    }
+    
+    return curr;
+}
+```
 ## Palindrome-Linked-List
 https://leetcode.com/problems/palindrome-linked-list/
 ## Merge-Two-Sorted-Lists
