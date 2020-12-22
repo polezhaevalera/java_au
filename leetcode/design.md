@@ -17,6 +17,47 @@ https://leetcode.com/problems/min-stack/
 
 ## Implement Stack Using Queues
 https://leetcode.com/problems/implement-stack-using-queues/
+```java
+Queue<Integer> mainQ;
+Queue<Integer> helperQ;
+public MyStack() {
+    mainQ = new ArrayDeque<>();
+    helperQ = new ArrayDeque<>();
+}
+
+public void push(int x) {
+    mainQ.add(x);
+}
+
+public int pop() {
+    while(mainQ.size()>1){
+        helperQ.add(mainQ.remove());
+    }
+        
+    int val = mainQ.remove();
+    Queue<Integer> temp = mainQ;
+    mainQ = helperQ;
+    helperQ = temp;
+    return val;
+}
+
+public int top() {
+    while(mainQ.size()>1){
+        helperQ.add(mainQ.remove());
+    }
+        
+   int val = mainQ.remove();
+    helperQ.add(val);
+    Queue<Integer> temp = mainQ;
+    mainQ = helperQ;
+    helperQ = temp;
+    return val;
+}
+public boolean empty() {
+    if(mainQ.size()!=0) return false;
+    else return true;
+}
+```
 
 ## Implement Queue Using Stacks
 https://leetcode.com/problems/implement-queue-using-stacks/
