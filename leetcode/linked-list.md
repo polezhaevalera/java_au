@@ -8,7 +8,24 @@
 + [Reorder-List](#Reorder-List)
 
 ## Reverse-Linked-List
-https://leetcode.com/problems/reverse-linked-list/
+https://leetcode.com/problems/reverse-linked-list/'
+```java
+public ListNode reverseList(ListNode head) {
+    ListNode prev, curr, next;
+
+    prev = null;
+    curr = head;
+
+    while(curr != null) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+        
+    return prev;
+}
+```
 ## Middle-Of-The-Linked-List
 https://leetcode.com/problems/middle-of-the-linked-list/
 ## Palindrome-Linked-List
